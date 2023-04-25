@@ -1,8 +1,6 @@
 package fr.uga.l3miage.example.annotations;
 
-import fr.uga.l3miage.example.error.DescriptionAlreadyUseErrorResponse;
-import fr.uga.l3miage.example.error.IsNotTestErrorResponse;
-import fr.uga.l3miage.example.error.TestIntIsZeroErrorResponse;
+import fr.uga.l3miage.example.error.*;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.DiscriminatorMapping;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -58,14 +56,17 @@ import java.lang.annotation.Target;
  *      </li>
  * </ul>
  */
-@ApiResponse(responseCode = "400", description = "Une erreur s'est produite lors de la création ou de la mise à jour de l'entité Test.",
+@ApiResponse(responseCode = "400", description = "Une erreur s'est produite lors de la création ou de la mise à jour de l'une des entités suivantes: Test, Miahoot, Question, Reponse.",
         content = @Content(
-                schema = @Schema(oneOf = {IsNotTestErrorResponse.class, TestIntIsZeroErrorResponse.class, DescriptionAlreadyUseErrorResponse.class},
+                schema = @Schema(oneOf = {IsNotTestErrorResponse.class, TestIntIsZeroErrorResponse.class, DescriptionAlreadyUseErrorResponse.class,
+                ReponseNotFoundErrorResponse.class, IsNotAQuestionOfThisMiahootErrorResponse.class},
                         discriminatorProperty = "errorCode",
                         discriminatorMapping = {
                                 @DiscriminatorMapping(value = "TEST_INT_IS_ZERO_ERROR", schema = TestIntIsZeroErrorResponse.class),
                                 @DiscriminatorMapping(value = "IS_NOT_TEST_ERROR", schema = IsNotTestErrorResponse.class),
-                                @DiscriminatorMapping(value = "DESCRIPTION_ALREADY_USE_ERROR", schema = DescriptionAlreadyUseErrorResponse.class)
+                                @DiscriminatorMapping(value = "DESCRIPTION_ALREADY_USE_ERROR", schema = DescriptionAlreadyUseErrorResponse.class),
+                                @DiscriminatorMapping(value = "RESPONSE_IS_NOT_FOUND", schema = ReponseNotFoundErrorResponse.class),
+                                @DiscriminatorMapping(value = "IS_NOT_A_QUESTION_OF_THIS_MIAHOOT", schema = IsNotAQuestionOfThisMiahootErrorResponse.class)
                         }),
                 mediaType = MediaType.APPLICATION_JSON_VALUE))
 @Target(ElementType.METHOD)
