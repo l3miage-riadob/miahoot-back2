@@ -1,10 +1,7 @@
 package fr.uga.l3miage.example.config.handler;
 
 import fr.uga.l3miage.example.error.*;
-import fr.uga.l3miage.example.exception.rest.DescriptionAlreadyUseRestException;
-import fr.uga.l3miage.example.exception.rest.IsNotTestRestException;
 import fr.uga.l3miage.example.exception.rest.ReponseEntityNotFoundRestException;
-import fr.uga.l3miage.example.exception.rest.TestEntityNotFoundRestException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;

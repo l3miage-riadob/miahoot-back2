@@ -1,12 +1,16 @@
 package fr.uga.l3miage.example.component;
 
+import fr.uga.l3miage.example.exception.rest.ReponseEntityNotFoundRestException;
+import fr.uga.l3miage.example.exception.technical.ReponseEntityNotFoundException;
 import fr.uga.l3miage.example.mapper.ReponseMapper;
 import fr.uga.l3miage.example.models.ReponseEntity;
 import fr.uga.l3miage.example.repository.ReponseRepository;
 import fr.uga.l3miage.example.response.Reponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
 /**
@@ -31,6 +35,18 @@ public class ReponseComponent {
      */
     public void createReponse(ReponseEntity newReponseEntity) {
         reponseRepository.save(newReponseEntity);
+    }
+
+    public ReponseEntity getReponse(Long id) throws ReponseEntityNotFoundException {
+        try {
+            return reponseRepository.getOne(id);
+        } catch (Exception ex) {
+            throw new ReponseEntityNotFoundRestException(String.format("Cette réponse n'existe pas"), null, ex);
+        }
+    }
+
+    public void deleteReponse(Long id) {
+        reponseRepository.deleteById(id);
     }
 
 }

@@ -255,4 +255,5 @@ public interface ExampleEndpoint {
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("{description}")
     void deleteTestEntity(@PathVariable String description);
+
 }

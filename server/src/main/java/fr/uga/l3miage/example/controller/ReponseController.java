@@ -32,4 +32,9 @@ public class ReponseController implements ReponseEndpoint {
         reponseService.createReponse(request, idMiahoot, idQuestion);
     }
 
+    @Override
+    public void deleteReponseEntity(Long idMiahoot, Long idQuestion, Long idReponse) {
+        reponseService.deleteReponse(idMiahoot, idQuestion, idReponse);
+    };
+
 }
