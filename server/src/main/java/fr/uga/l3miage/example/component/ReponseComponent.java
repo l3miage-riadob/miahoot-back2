@@ -24,7 +24,7 @@ public class ReponseComponent {
     private final ReponseRepository reponseRepository;
     private final QuestionRepository questionRepository;
 
-    public Collection<Reponse> getAllQuestionAnswers(Long idQuestion) {
+    public Collection<ReponseEntity> getAllQuestionAnswers(Long idQuestion) {
         return questionRepository.getOne(idQuestion).getReponses();
     }
 

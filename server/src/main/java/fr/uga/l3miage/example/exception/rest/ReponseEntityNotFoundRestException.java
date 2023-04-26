@@ -21,5 +21,5 @@ public class ReponseEntityNotFoundRestException extends RuntimeException {
 
     public HttpStatus getHttpStatus() { return HttpStatus.NOT_FOUND; }
 
-    public ErrorCode getErrorCode() { return ErrorCode.ENTITY_NOT_FOUND; }
+    public ErrorCode getErrorCode() { return ErrorCode.REPONSE_IS_NOT_FOUND; }
 }

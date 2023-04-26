@@ -19,7 +19,7 @@ import static com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY;
 @EqualsAndHashCode(callSuper = true)
 public class ReponseNotFoundErrorResponse extends ErrorResponse {
 
-    protected static final String TYPE_NAME = "RESPONSE_IS_NOT_FOUND";
+    protected static final String TYPE_NAME = "REPONSE_IS_NOT_FOUND";
 
     /**
      * Cette variable est utilisée que pour la doc dans le swagger<br>

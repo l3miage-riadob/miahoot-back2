@@ -17,10 +17,10 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class ReponseService {
 
-    private ReponseComponent reponseComponent;
-    private ReponseMapper reponseMapper;
-    private MiahootComponent miahootComponent;
-    private QuestionComponent questionComponent;
+    private final ReponseComponent reponseComponent;
+    private final ReponseMapper reponseMapper;
+    private final MiahootComponent miahootComponent;
+    private final QuestionComponent questionComponent;
 
     /**
      * IMPORTANT: Je part du principe que pour la classe miahoot et question il y a une class MiahootEntityNotFoundException qui
@@ -58,7 +58,7 @@ public class ReponseService {
             ReponseEntity reponse = reponseComponent.getReponse(idReponse);
             if (miahoot.getId(id) == question.getMiahoot().getId() && question.getId() == reponse.getQuestion().getId()) {
                 reponseComponent.deleteReponse(idReponse);
-            } else throw new IsNotAQuestionOfThisMiahootRestException("Cette question ne fait pas partie de ce Miahoot ou cette réponse n'est pas liée à cette question", ex);
+            } else throw new IsNotAQuestionOfThisMiahootRestException("Cette question ne fait pas partie de ce Miahoot ou cette réponse n'est pas liée à cette question");
         } catch (MiahootEntityNotFoundException | QuestionEntityNotFoundException | ReponseEntityNotFoundException ex) {
             throw new ReponseEntityNotFoundRestException(String.format("Le miahoot ou la question ou la réponse n'existe pas"), null, ex);
         }
