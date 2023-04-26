@@ -82,7 +82,6 @@ public class ExampleComponent {
         } else throw new IsNotTestException("Le champs isTest n'est pas à true, donc erreur technique levée", null);
     }
 
-
     /**
      * @param description de l'entité à supprimer
      * @throws MultipleEntityHaveSameDescriptionException <b color="red">Impossible à lever si on passe toujours par les endpoints</b>, mais le sera s'il existe plusieurs entités Test qui sont supprimées. Un <b color="green">rollback()</b> est effectué si problème
@@ -94,7 +93,5 @@ public class ExampleComponent {
             throw new MultipleEntityHaveSameDescriptionException("Plusieurs entités ont la même description alors que c'est impossible niveau métier !!");
         else if (deleted == 0)
             throw new TestEntityNotFoundException("L'entité à supprimer n'a pas été trouvée", description);
-
-
     }
 }

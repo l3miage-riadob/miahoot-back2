@@ -30,7 +30,6 @@ public class ExampleService {
     private final ExampleComponent exampleComponent;
     private final TestMapper testMapper;
 
-
     /**
      * @param isInError boolean qui dit si oui ou non, on veut une erreur
      * @return "Hello Word"
@@ -106,6 +105,4 @@ public class ExampleService {
             throw new TestEntityNotDeletedRestException(ex.getMessage());
         }
     }
-
-
 }

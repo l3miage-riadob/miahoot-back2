@@ -1,6 +1,8 @@
 # Spring boot example
 
-Ce projet est un exemple pour les L3 MIAGE de grenoble. Il peut être utilisé comme projet d'amorce.
+
+Ce 
+projet est un exemple pour les L3 MIAGE de grenoble. Il peut être utilisé comme projet d'amorce.
 
 # Prérequis
 
@@ -61,7 +63,7 @@ password: root
 
 Étapes pour connecter votre bd :
 1) Ajouter un serveur dans pgAdmin
-![ajout serveur](doc/pictures/AddServerPgAdmin.png)
+   ![ajout serveur](doc/pictures/AddServerPgAdmin.png)
 2) Remplir avec les informations suivantes :
    ```yml
    host: localhost
@@ -97,10 +99,10 @@ java -jar server/target/Example.jar &
 
 Dans votre éditeur vous n'avez qu'à lancer le main dans le fichier `ExampleSpringApplication`
 
-![start projet](doc/pictures/start.png)
+<img alt="start projet" src="doc/pictures/start.png"/>
 
 
 # Swagger
 
-* Vous trouverez le swagger, lorsque votre serveur est **démarré**, à l'adresse suivante : 
+* Vous trouverez le swagger, lorsque votre serveur est **démarré**, à l'adresse Osuivante : 
 <a href="http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/">swagger</a>

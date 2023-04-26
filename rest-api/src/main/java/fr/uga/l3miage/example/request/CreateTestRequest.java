@@ -13,6 +13,7 @@ import lombok.Data;
  *     <li>{@link Builder} permet de créer un builder(<a href="https://refactoring.guru/fr/design-patterns/builder">patron builder</a>) pour la classe.<br>Aller voir la doc sur <a href="https://projectlombok.org/features/Builder">projetlombok.org/features/Builder</a></a></li></li></li>
  * </ul>
  */
+
 @Data
 @Builder
 @Schema(description = "Correspond à la requête permettant de créer une entité test")
