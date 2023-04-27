@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
+import java.util.Collection;
 import java.util.List;
 
 @Data
@@ -13,14 +14,14 @@ import java.util.List;
 public class Miahoot {
 
     @Schema(description = "Correspond au nom donné au Miahoot", example = "QCM seance 2")
-    private String nom;
+    String nom;
 
     @Schema(description = "Correspond à l'id de l'enseignant qui a crée ce miahoot", example = "AX43B")
-    private String idEnseignant;
+    String idEnseignant;
 
     @Schema(description = "id métier qui servira pour supprimer le miahoot, accéder en particulier à ce miahoot et pour les participants à le lire", example = "45")
-    private String idMetier;
+    String idMetier;
 
     @Schema(description = "La liste des questions qui composent ce miahoot")
-    List<Question> questions;
+    Collection<Question> questions;
 }

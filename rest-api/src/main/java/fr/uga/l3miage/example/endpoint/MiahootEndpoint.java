@@ -30,6 +30,7 @@ public interface MiahootEndpoint {
     /**
      * Attention le paramètre est récupéré en tant que string dans l'url. Il faudra le convertir en Long au besoin
      */
+
     @Operation(description = "Ce endpoint renvoie tous les miahoot stockés dans la base de données si le paramètre idEnseignant n'est pas donnée. " +
             "S'il est donnée celà renvoit tous les miahoot de l'enseignant associé à cet id. " +
             "Note: Dans le cas applicatif on donnera toujours l'id. Sans l'id est utile pour les tests")
@@ -43,14 +44,6 @@ public interface MiahootEndpoint {
     Collection<Miahoot> getAllEntityMiahoot(@RequestParam(name = "id", required = false) String idEnseignant);
 
 
-    @Operation(description = "Création d'une entité Miahoot")
-    @ApiResponse(responseCode = "200", description = "L'entité Miahoot a bien été créée.")
-    @Error400Custom
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("miahoots")
-    String createEntityMiahoot(@Valid @RequestBody CreateMiahootRequest request);
-
-
     @Operation(description = "Récupérer le DTO de l'entité Miahoot qui a pour id celui passé en paramètre")
     @ApiResponse(responseCode = "200", description = "Renvoie le DTO de l'entité test demandée",
             content = @Content(schema = @Schema(implementation = Miahoot.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
@@ -59,6 +52,14 @@ public interface MiahootEndpoint {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("miahoots/{idMetier}")
     Miahoot getEntityMiahoot(@PathVariable String idMetier);
+
+
+    @Operation(description = "Création d'une entité Miahoot")
+    @ApiResponse(responseCode = "201", description = "L'entité Miahoot a bien été créée.")
+    @Error400Custom
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("miahoots")
+    String createEntityMiahoot(@Valid @RequestBody CreateMiahootRequest request);
 
 
     @Operation(description = "Mise à jour d'une entité Miahoot")

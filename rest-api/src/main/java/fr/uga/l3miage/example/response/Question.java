@@ -9,7 +9,6 @@ import java.util.List;
 @Data
 @Builder
 @Schema(description = "DTO Question ")
-
 public class Question {
 
     @Schema(description = "correspond à une question", example = "Quelle est la couleur du cheval blanc d'Henri IV")
