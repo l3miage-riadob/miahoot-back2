@@ -39,7 +39,7 @@ public class MiahootEntity {
      * l'on renvoie
      */
 
-
+    // Ca marche?
     @GeneratedValue(generator = "miahoot_seq")
     @GenericGenerator(
             name = "miahoot_seq",
@@ -49,6 +49,7 @@ public class MiahootEntity {
                     @Parameter(name = IdMetierGenerator.VALUE_PREFIX_PARAMETER, value = "MIAHOOT-"),
                     @Parameter(name = IdMetierGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d") })
     private String idMetier;
+
 
 
     @NotBlank
