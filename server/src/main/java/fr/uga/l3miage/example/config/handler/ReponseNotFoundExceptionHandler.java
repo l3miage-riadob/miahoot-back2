@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 @ControllerAdvice
 @Slf4j
 public class ReponseNotFoundExceptionHandler {
-
+/*
     @ExceptionHandler(ReponseEntityNotFoundRestException.class)
     public ResponseEntity<ErrorResponse> handle(HttpServletRequest httpServletRequest, Exception exception){
         ReponseEntityNotFoundRestException ex = (ReponseEntityNotFoundRestException) exception;
@@ -30,5 +30,7 @@ public class ReponseNotFoundExceptionHandler {
         log.warn(ex.getMessage());
         return ResponseEntity.status(ex.getHttpStatus()).body(response);
     }
+
+ */
 
 }

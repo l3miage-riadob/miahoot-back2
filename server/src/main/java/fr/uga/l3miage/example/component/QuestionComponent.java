@@ -8,9 +8,12 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 
 /**
- * Attention: Potentiellement il faudra mettre une limite au nombre de réponse possible voir d'autres choses
- * à prendre en compte. Pour le moment on rend l'entité persistante sans plus de vérification
- * @param newReponseEntity correspond à la nouvelle réponse possible que l'on veut ajouter à une question
+ * !!! ATTENTION !!!
+ * Comme on a décidé de manipuler l'entité miahoot en elle même, on a plus besoin pour le moment des endpoints sur les entités Question et Reponse
+ * Donc on a désactivé cette classe
+ * NOTE: certaines des classes mises en commentaire n'ont pas étées fini car les entités Miahoot, Question et Reponse ont été réalisé par 3 personnes différentes
+ * puis merge ensemble. Et la décision de n'utiliser que les endpoints de Miahoot c'est faite après.
+ *
  */
 
 /**
