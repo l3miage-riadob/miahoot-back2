@@ -23,5 +23,5 @@ public class Miahoot {
     String idMetier;
 
     @Schema(description = "La liste des questions qui composent ce miahoot")
-    Collection<Question> questions;
+    List<Question> questions;
 }
