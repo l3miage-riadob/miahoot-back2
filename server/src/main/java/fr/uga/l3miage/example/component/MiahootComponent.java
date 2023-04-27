@@ -8,10 +8,13 @@ import fr.uga.l3miage.example.mapper.MiahootMapper;
 import fr.uga.l3miage.example.models.MiahootEntity;
 import fr.uga.l3miage.example.models.TestEntity;
 import fr.uga.l3miage.example.repository.MiahootRepository;
+import fr.uga.l3miage.example.response.Miahoot;
 import fr.uga.l3miage.example.response.Test;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Collection;
 import java.util.List;
 @Component
 @RequiredArgsConstructor
@@ -26,6 +29,16 @@ public class MiahootComponent {
         return miahootRepository.findById(id)
                 .orElseThrow(() -> new MiahootEntityNotFoundException(String.format("Aucune entité de Miahoot n'a été trouvée pour l'id [%d]", id), Long.toString(id)));
                 //attention changer le type de l'exception
+    }
+
+    /**
+     *
+     * @param idEnseignant id de l'enseignant pour lequel on cherche ses miahoot. L'id est bien un
+     * @return
+     */
+
+    Collection<Miahoot> getAllEntityMiahoot(String idEnseignant) {
+
     }
 
     //get tous les Miahoot pour un auteur donné

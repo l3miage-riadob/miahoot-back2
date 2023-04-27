@@ -24,7 +24,8 @@ public class MiahootEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    private Long idEnseignant; //sera transmis par le client pour la creation via le JSON. Sert pour la récupération de tous les Miahoots d'un enseigant
+    @NotBlank
+    private String idEnseignant; //sera transmis par le client pour la creation via le JSON. Sert pour la récupération de tous les Miahoots d'un enseigant
 
     /**
      * !!! ATTENTION !!!
