@@ -11,10 +11,26 @@ import fr.uga.l3miage.example.service.MiahootService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collection;
+
 @RestController
 @RequiredArgsConstructor
 public class MiahootController implements MiahootEndpoint {
+
     private final MiahootService miahootService;
+
+    /**
+     *
+     * @param idEnseignant id de l'enseignant pour lequel on cherche ses miahoots.
+     * @return Tous les miahoots associés à idEnseignant ou bien tous les miahoots si cet id est null
+     */
+    public Collection<Miahoot> getAllEntityMiahoot(String idEnseignant) {
+        if (idEnseignant == null) {
+            return miahootService.getAllMiahoot();
+        } else {
+            return miahootService.getAllEnseignantMiahoot(idEnseignant);
+        }
+    }
 
     @Override
     public Miahoot getEntityMiahoot(final Long id) {

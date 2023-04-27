@@ -31,15 +31,6 @@ public class MiahootComponent {
                 //attention changer le type de l'exception
     }
 
-    /**
-     *
-     * @param idEnseignant id de l'enseignant pour lequel on cherche ses miahoot. L'id est bien un
-     * @return
-     */
-
-    Collection<Miahoot> getAllEntityMiahoot(String idEnseignant) {
-
-    }
 
     //get tous les Miahoot pour un auteur donné
     public List<MiahootEntity> getMiahoots(final Long auteurId) throws MiahootEntityNotFoundException {
