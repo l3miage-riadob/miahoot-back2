@@ -17,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Collection;
 
 @Service
 @RequiredArgsConstructor
@@ -37,13 +38,26 @@ public class MiahootService {
         try {
             return miahootMapper.toDto(miahootComponent.getMiahoot(id));
         } catch (MiahootEntityNotFoundException e) {
-
             throw new MiahootEntityNotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]",e.getMessage()), Long.toString(id), e);
         }
     }
 
-    //TODO
-    //get tous les miahoot pour un auteur donné
+
+    // TODO Faut t'il vraiment ajouter une exception si il ne trouve rien?
+
+    // Renvoie tous les Miahoot présent dans la base de données
+    public Collection<Miahoot> getAllMiahoot() {
+        return miahootMapper.toDto(miahootComponent.getAllMiahoot());
+    }
+
+    // Renvoie tous les Miahoot présent dans la base de donnée associé à l'idEnseignant
+    public Collection<Miahoot> getAllEnseignantMiahoot(String idEnseignant) {
+        try {
+            return miahootMapper.toDto(miahootComponent.getAllEnseignantMiahoot(idEnseignant));
+        } catch (MiahootEntityNotFoundException ex) {
+            throw new MiahootEntityNotFoundRestException(String.format("Impossible de charger l'entité"), null);
+        }
+    }
 
     //TODO
     //delete pour auteur

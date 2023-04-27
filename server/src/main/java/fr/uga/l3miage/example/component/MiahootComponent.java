@@ -31,6 +31,16 @@ public class MiahootComponent {
                 //attention changer le type de l'exception
     }
 
+    public Collection<MiahootEntity> getAllMiahoot() {
+        return miahootRepository.findAll();
+    }
+
+    // Renvoie tous les Miahoot présent dans la base de donnée associé à l'idEnseignant
+    public Collection<MiahootEntity> getAllEnseignantMiahoot(String idEnseignant) throws MiahootEntityNotFoundException {
+        return miahootRepository.findAllMiahootByIdEnseignant(idEnseignant)
+                .orElseThrow(() -> new MiahootEntityNotFoundException(String.format("Aucune entité de Miahoot n'a été trouvée pour l'id [%d]", idEnseignant), idEnseignant));
+    }
+
 
     //get tous les Miahoot pour un auteur donné
     public List<MiahootEntity> getMiahoots(final Long auteurId) throws MiahootEntityNotFoundException {
