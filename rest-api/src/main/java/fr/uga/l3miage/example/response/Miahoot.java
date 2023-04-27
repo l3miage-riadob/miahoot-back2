@@ -15,8 +15,8 @@ public class Miahoot {
     @Schema(description = "Correspond au nom donné au Miahoot", example = "QCM seance 2")
     private String nom;
 
-    @Schema(description = "TEMPORAIRE: correspond à l'id unique base de donnée. Doit être changé avec l'id métier", example = "45")
-    private Long id;
+    @Schema(description = "id métier qui servira pour supprimer le miahoot, accéder en particulier à ce miahoot et pour les participants à le lire", example = "45")
+    private String idMetier;
 
     @Schema(description = "La liste des questions qui composent ce miahoot")
     List<Question> questions;

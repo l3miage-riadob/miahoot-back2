@@ -38,6 +38,8 @@ public class MiahootEntity {
      * l'on renvoie
      */
 
+    private String idMetier;
+
     @NotBlank
     private String nom;
 
@@ -52,7 +54,6 @@ public class MiahootEntity {
         TestEntity that = (TestEntity) o;
         return getId() != null && Objects.equals(getId(), that.getId());
     }
-
 
     @Override
     public int hashCode() {
