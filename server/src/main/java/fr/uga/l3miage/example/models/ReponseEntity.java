@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 @Getter
@@ -15,17 +16,17 @@ import java.util.Objects;
 public class ReponseEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(nullable = false)
+    @NotBlank
     private String label;
 
     @Column(nullable = false)
     private Boolean estValide;
 
     @ManyToOne
-    private Question question;
+    private QuestionEntity question;
 
 
     @Override

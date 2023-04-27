@@ -5,12 +5,11 @@ import lombok.*;
 import org.aspectj.weaver.patterns.TypePatternQuestions;
 import org.hibernate.Hibernate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -22,18 +21,28 @@ import java.util.Set;
 @NoArgsConstructor
 public class MiahootEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    private Long idEnseignant; //sera transmis par le client pour la creation via le JSON. Sert pour la récupération de tous les Miahoots d'un enseigant
+
+    /**
+     * !!! ATTENTION !!!
+     * Rajouter un id métier string? ou long calculé d'une certaine manière pour qu'il soit unique
+     * Cette id sera renvoyé à l'enseignant et il servira à 2 choses:
+     *      - Ce connecter à ce miahoot pour un participant
+     *      - Update ce miahoot pour l'enseignant
+     * Pour le moment on renvoie l'id base de données
+     * ATTENTION: Il faudra bien penser à changer dans rest-api/response/Miahoot l'id que
+     * l'on renvoie
+     */
+
+    @NotBlank
     private String nom;
 
-    @NotNull
-    private Long auteurId; //sera transmis par le client pour la creation via le JSON
+    @OneToMany(mappedBy = "miahoot", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    List<QuestionEntity> questions;
 
-    /*
-    @OneToMany
-    Set<Question> questions;
-    */
 
     @Override
     public boolean equals(Object o) {
@@ -43,12 +52,13 @@ public class MiahootEntity {
         return getId() != null && Objects.equals(getId(), that.getId());
     }
 
-    /*
+
     @Override
     public int hashCode() {
         return getClass().hashCode();
     }
 
+    /*
     public void addQuestion(Question question) {
         if (this.questions == null) {
             this.questions = new HashSet<>();

@@ -18,16 +18,23 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
+/**
+ * Pour l'instant on centralise les transmissions autour du miahoot donc tous les endpoints précédemment crées ici ne sont pas utiliser
+ * A décommenter/faire évoluer en cas de besoin
+ */
+
 @Tag(name = "Requêtes sur les réponses")
 @CrossOrigin
 @RestController
 @RequestMapping("api/v0/")
 public interface ReponseEndpoint {
 
+
     /**
      * Endpoint définit pour la récupération de toutes les réponses affiliées à une question
      */
 
+    /*
     @Operation(description = "Récupérer toutes les réponses d'une question")
     @ApiResponse(responseCode = "200", description = "Renvoie le DTO de toutes les entités Reponse associé à l'id de la question demandé",
             content = @Content(schema = @Schema(implementation = Reponse.class), mediaType = MediaType.APPLICATION_JSON_VALUE))
@@ -38,12 +45,14 @@ public interface ReponseEndpoint {
     @GetMapping("miahoots/{idMiahoot}/questions/{idQuestion}")
     Collection<Reponse> getAllEntityReponseOfAQuestion(@NotNull @PathVariable("idMiahoot") Long idMiahoot,
                                                        @NotNull @PathVariable("idQuestion") Long idQuestion);
-
+    */
 
     /**
      * Endpoint définit pour la création d'une entité de type Reponse associé à l'une des questions d'un miahoot d'un
      * enseignant
      */
+
+    /*
     @Operation(description = "Création d'une entité Reponse")
     @ApiResponse(responseCode = "201", description = "La Reponse a été créée avec succès")
     @ApiResponse(responseCode = "404", description = "Renvoie une erreur 404 si aucun miahoot ne correspond à l'idMiahoot ou si " +
@@ -55,12 +64,14 @@ public interface ReponseEndpoint {
     void createEntityReponse(@Valid @RequestBody CreateReponseRequest request,
                              @NotNull @PathVariable("idMiahoot") Long idMiahoot,
                              @NotNull @PathVariable("idQuestion") Long idQuestion);
-
+    */
 
     /**
      * Endpoint définit pour la suppression d'une entité de type Reponse associé à l'une des questions d'un miahoot d'un enseignant
      * ATTENTION: Remplacer le schéma implémentation par une classe d'exeption spéciale pour le delete de reponse
      */
+
+    /*
     @Operation(description = "Suppression d'une entité Reponse")
     @ApiResponse(responseCode = "200", description = "La réponse a été supprimée avec succès")
     @ApiResponse(responseCode = "418", description = "L'entité n'a pas pu être supprimé. Renvoie l'erreur théière",
@@ -70,4 +81,5 @@ public interface ReponseEndpoint {
     void deleteReponseEntity(@NotNull @PathVariable("idMiahoot") Long idMiahoot,
                              @NotNull @PathVariable("idQuestion") Long idQuestion,
                              @NotNull @PathVariable("idReponse") Long idReponse);
+   */
 }
