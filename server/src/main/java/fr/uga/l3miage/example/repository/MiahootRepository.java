@@ -16,7 +16,7 @@ public interface MiahootRepository extends JpaRepository <MiahootEntity, Long> {
 
     Optional<MiahootEntity> findById(final Long id);
 
-    List<MiahootEntity> findAllByAuteurId(final Long auteurId);
+    Collection<MiahootEntity> findAllByAuteurId(final Long auteurId);
 
     Optional<Collection<MiahootEntity>> findAllMiahootByIdEnseignant(String idEnseignant);
 

@@ -43,8 +43,8 @@ public class MiahootComponent {
 
 
     //get tous les Miahoot pour un auteur donné
-    public List<MiahootEntity> getMiahoots(final Long auteurId) throws MiahootEntityNotFoundException {
-        List<MiahootEntity> result = miahootRepository.findAllByAuteurId(auteurId);
+    public Collection<MiahootEntity> getMiahoots(final Long auteurId) throws MiahootEntityNotFoundException {
+        Collection<MiahootEntity> result = miahootRepository.findAllByAuteurId(auteurId);
 
         if (result.size() == 0) {
            throw new MiahootEntityNotFoundException(String.format("Aucune liste de Miahoot pour l'auteur ayant l'id [%d]", auteurId), Long.toString(auteurId));
