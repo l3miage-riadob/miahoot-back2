@@ -11,10 +11,10 @@ import org.springframework.http.HttpStatus;
 
 import static com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY;
 
-@JsonTypeName(TestEntityNotDeletedErrorResponse.TYPE_NAME)
+@JsonTypeName(MiahootEntityNotDeletedErrorResponse.TYPE_NAME)
 @ToString(callSuper = true, exclude = "errorCodeSwaggerDocumentation")
 @EqualsAndHashCode(callSuper = true)
-public class MiahootNotDeletedErrorResponse  extends ErrorResponse {
+public class MiahootEntityNotDeletedErrorResponse extends ErrorResponse {
     /**
      * Match {@link ErrorCode#TEST_ENTITY_NOT_DELETED_ERROR}
      */
@@ -49,7 +49,7 @@ public class MiahootNotDeletedErrorResponse  extends ErrorResponse {
      */
     @Builder
     @Jacksonized
-    public MiahootNotDeletedErrorResponse (String uri, HttpStatus httpStatus, ErrorCode errorCode, String errorMessage) {
+    public MiahootEntityNotDeletedErrorResponse(String uri, HttpStatus httpStatus, ErrorCode errorCode, String errorMessage) {
         super(uri, httpStatus, errorCode, errorMessage);
     }
 }

@@ -1,10 +1,8 @@
 package fr.uga.l3miage.example.config.handler;
 
 import fr.uga.l3miage.example.error.ErrorResponse;
-import fr.uga.l3miage.example.error.MiahootNotDeletedErrorResponse;
-import fr.uga.l3miage.example.error.TestEntityNotDeletedErrorResponse;
+import fr.uga.l3miage.example.error.MiahootEntityNotDeletedErrorResponse;
 import fr.uga.l3miage.example.exception.rest.MiahootEntityNotDeletedRestException;
-import fr.uga.l3miage.example.exception.rest.TestEntityNotDeletedRestException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
@@ -22,7 +20,7 @@ public class MiahootEntityNotDeletedExceptionHandler {
     @ExceptionHandler(MiahootEntityNotDeletedRestException.class)
     public ResponseEntity<ErrorResponse> handle(HttpServletRequest httpServletRequest, Exception exception){
         MiahootEntityNotDeletedRestException ex = (MiahootEntityNotDeletedRestException) exception;
-        final MiahootNotDeletedErrorResponse response = MiahootNotDeletedErrorResponse.builder()
+        final MiahootEntityNotDeletedErrorResponse response = MiahootEntityNotDeletedErrorResponse.builder()
                 .uri(httpServletRequest.getRequestURI())
                 .httpStatus(ex.getHttpStatus())
                 .errorCode(ex.getErrorCode())

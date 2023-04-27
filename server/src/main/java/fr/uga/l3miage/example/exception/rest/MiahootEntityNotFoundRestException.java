@@ -18,8 +18,8 @@ public class MiahootEntityNotFoundRestException extends RuntimeException {
     }
 
     public HttpStatus getHttpStatus() {
-        return HttpStatus.NOT_FOUND;
+        return HttpStatus.I_AM_A_TEAPOT;
     }
 
-    public ErrorCode getErrorCode(){return ErrorCode.TEST_IS_NOT_FOUND;}
+    public ErrorCode getErrorCode(){return ErrorCode.TEST_ENTITY_NOT_DELETED_ERROR;}
 }
