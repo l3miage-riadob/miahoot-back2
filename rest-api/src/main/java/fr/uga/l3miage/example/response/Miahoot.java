@@ -15,6 +15,9 @@ public class Miahoot {
     @Schema(description = "Correspond au nom donné au Miahoot", example = "QCM seance 2")
     private String nom;
 
+    @Schema(description = "Correspond à l'id de l'enseignant qui a crée ce miahoot", example = "AX43B")
+    private String idEnseignant;
+
     @Schema(description = "id métier qui servira pour supprimer le miahoot, accéder en particulier à ce miahoot et pour les participants à le lire", example = "45")
     private String idMetier;
 
