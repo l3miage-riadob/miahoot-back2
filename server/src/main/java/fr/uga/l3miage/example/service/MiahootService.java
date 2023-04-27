@@ -2,10 +2,7 @@ package fr.uga.l3miage.example.service;
 
 
 import fr.uga.l3miage.example.component.MiahootComponent;
-import fr.uga.l3miage.example.exception.rest.MiahootEntityNotDeletedRestException;
-import fr.uga.l3miage.example.exception.rest.MiahootEntityNotFoundRestException;
-import fr.uga.l3miage.example.exception.rest.TestEntityNotDeletedRestException;
-import fr.uga.l3miage.example.exception.rest.TestEntityNotFoundRestException;
+import fr.uga.l3miage.example.exception.rest.*;
 import fr.uga.l3miage.example.exception.technical.MiahootEntityNotFoundException;
 import fr.uga.l3miage.example.exception.technical.MultipleEntityHaveSameDescriptionException;
 import fr.uga.l3miage.example.exception.technical.TestEntityNotFoundException;
@@ -33,12 +30,12 @@ public class MiahootService {
     }
 
     //get un miahoot via son id au format DTO
-    public Miahoot getMiahoot(final Long id) {
+    public Miahoot getMiahoot(final String idMetier) {
 
         try {
-            return miahootMapper.toDto(miahootComponent.getMiahoot(id));
+            return miahootMapper.toDto(miahootComponent.getMiahoot(idMetier));
         } catch (MiahootEntityNotFoundException e) {
-            throw new MiahootEntityNotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]",e.getMessage()), Long.toString(id), e);
+            throw new MiahootEntityNotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]",e.getMessage()), idMetier, e);
         }
     }
 
@@ -59,29 +56,25 @@ public class MiahootService {
         }
     }
 
-    //TODO
-    //delete pour auteur
-
-    //TODO
-    //delete un miahoot via son  id
-
     @Transactional
-    public void deleteMiahoot(final Long id) {
-
+    public void deleteMiahoot(final String idMetier) {
         try {
-            MiahootEntity searchedMiahoot = this.miahootComponent.getMiahoot(id);
-            miahootComponent.deleteMiahoot(id);
-        }catch (MiahootEntityNotFoundException e) {
-            //throw ici
+            miahootComponent.deleteMiahoot(idMetier);
+        } catch (MiahootEntityNotFoundException | MultipleEntityHaveSameDescriptionException e) {
             throw new MiahootEntityNotDeletedRestException(e.getMessage());
         }
+    }
 
-        /*
-        try {
-            miahootComponent.deleteMiahoot(id);
-        } catch (MiahootEntityNotFoundException e) {
-            throw new MiahootEntityNotDeletedRestException(e.getMessage());
-        } */
+    public void updateMiahoot(Miahoot miahoot, String idMetier) {
+        //if (miahoot.getIdMetier() == idMetier) {
+        if (true) {
+            try {
+                miahootComponent.updateMiahoot(miahoot, idMetier);
+            } catch (MiahootEntityNotFoundException ex) {
+                throw new MiahootEntityNotFoundRestException(String.format("Aucune entité miahoot ayant l'id métier [%s] n'a été trouvé", idMetier), idMetier);
+            }
+        } else throw new MiahootEntityBadRequestRestException("L'id métier de l'url ne correspond pas à l'id métier du miahoot");
+
     }
 
 }

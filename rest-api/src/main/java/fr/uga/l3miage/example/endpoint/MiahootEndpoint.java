@@ -18,6 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
 @Tag(name = "Miahoot tag")
@@ -56,8 +57,18 @@ public interface MiahootEndpoint {
     @ApiResponse(responseCode = "404", description = "Renvoie une erreur 404 si l'entité n'est pas trouvée",
             content = @Content(schema = @Schema(implementation = MiahootNotFoundErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("miahoots/{id}")
-    Miahoot getEntityMiahoot(@PathVariable Long id);
+    @GetMapping("miahoots/{idMetier}")
+    Miahoot getEntityMiahoot(@PathVariable String idMetier);
+
+
+    @Operation(description = "Mise à jour d'une entité Miahoot")
+    @ApiResponse(responseCode = "202", description = "L'entité à bien été mise à jour")
+    @ApiResponse(responseCode = "404", description = "L'entité n'a pas pu être trouvé")
+    @Error400Custom
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @PatchMapping("miahoots/{idMetier}")
+    void updateMiahootEntity(@Valid @RequestBody final Miahoot miahoot,
+                             @NotNull @PathVariable final String idMetier);
 
 
     @Operation(description = "Suppression d'une entité Miahoot en bd")
@@ -65,6 +76,6 @@ public interface MiahootEndpoint {
     @ApiResponse(responseCode = "418", description = "Renvoie une erreur 418 si l'entité n'a pu être supprimée",
             content = @Content(schema = @Schema(implementation = TestEntityNotDeletedErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
     @ResponseStatus(HttpStatus.OK)
-    @DeleteMapping("miahoots/{id}")
-    void deleteMiahootEntity(@PathVariable Long id);
+    @DeleteMapping("miahoots/{idMetier}")
+    void deleteMiahootEntity(@NotNull @PathVariable final String idMetier);
 }

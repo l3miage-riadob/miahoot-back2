@@ -10,20 +10,18 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface MiahootRepository extends JpaRepository <MiahootEntity, Long> {
-    //nom id auteurId
-    //Optional<TestEntity> findByNom(final String description);
+public interface MiahootRepository extends JpaRepository<MiahootEntity, Long> {
 
     Optional<MiahootEntity> findById(final Long id);
 
-    Collection<MiahootEntity> findAllByAuteurId(final Long auteurId);
+    Optional<MiahootEntity> findByIdMetier(final String idMetier);
+
+    Collection<MiahootEntity> findAllByIdEnseignant(final String idEnseignant);
 
     Optional<Collection<MiahootEntity>> findAllMiahootByIdEnseignant(String idEnseignant);
 
-    //void deleteById(final Long id);
+    //int deleteByIdEnseignant(final String idEnseignant);
 
-    int deleteByNom(final String nom);
+    int deleteByIdMetier(final String idMetier);
 
-    int deleteByAuteurId(final Long auteurId);
-    //MiahootEntity save(MiahootEntity miahoot);
 }

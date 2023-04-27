@@ -65,6 +65,7 @@ import java.lang.annotation.Target;
                                 @DiscriminatorMapping(value = "TEST_INT_IS_ZERO_ERROR", schema = TestIntIsZeroErrorResponse.class),
                                 @DiscriminatorMapping(value = "IS_NOT_TEST_ERROR", schema = IsNotTestErrorResponse.class),
                                 @DiscriminatorMapping(value = "DESCRIPTION_ALREADY_USE_ERROR", schema = DescriptionAlreadyUseErrorResponse.class),
+                                @DiscriminatorMapping(value = "MIAHOOT_ENTITY_BAD_REQUEST", schema = MiahootEntityBadRequestErrorResponse.class),
                                 //@DiscriminatorMapping(value = "RESPONSE_IS_NOT_FOUND", schema = ReponseNotFoundErrorResponse.class),
                                 //@DiscriminatorMapping(value = "IS_NOT_A_QUESTION_OF_THIS_MIAHOOT", schema = IsNotAQuestionOfThisMiahootErrorResponse.class)
                         }),

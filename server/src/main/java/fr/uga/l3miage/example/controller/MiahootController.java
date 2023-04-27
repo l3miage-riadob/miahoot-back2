@@ -9,8 +9,12 @@ import fr.uga.l3miage.example.response.Miahoot;
 import fr.uga.l3miage.example.response.Test;
 import fr.uga.l3miage.example.service.MiahootService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
 @RestController
@@ -33,8 +37,8 @@ public class MiahootController implements MiahootEndpoint {
     }
 
     @Override
-    public Miahoot getEntityMiahoot(final Long id) {
-        return miahootService.getMiahoot(id);
+    public Miahoot getEntityMiahoot(final String idMetier) {
+        return miahootService.getMiahoot(idMetier);
     }
 
     @Override
@@ -44,10 +48,11 @@ public class MiahootController implements MiahootEndpoint {
 
 
     @Override
-    public void deleteMiahootEntity(final Long id) {
-        miahootService.deleteMiahoot(id);
+    public void deleteMiahootEntity(final String idMetier) {
+        miahootService.deleteMiahoot(idMetier);
     }
 
-    //TODO
-    //public void updateMiahootEntity(...,final Miahoot miahoot)
+    public void updateMiahootEntity(final Miahoot miahoot, final String idMetier) {
+        miahootService.updateMiahoot(miahoot, idMetier);
+    }
 }
