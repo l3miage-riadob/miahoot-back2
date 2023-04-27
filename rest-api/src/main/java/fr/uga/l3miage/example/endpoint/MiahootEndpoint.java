@@ -18,33 +18,53 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collection;
 
 @Tag(name = "Miahoot tag")
 @CrossOrigin
 @RestController
-@RequestMapping("api/v0/Miahoot")
+@RequestMapping("api/v0/")
 public interface MiahootEndpoint {
+
+    /**
+     * Attention le paramètre est récupéré en tant que string dans l'url. Il faudra le convertir en Long au besoin
+     */
+    @Operation(description = "Ce endpoint renvoie tous les miahoot stockés dans la base de données si le paramètre idEnseignant n'est pas donnée. " +
+            "S'il est donnée celà renvoit tous les miahoot de l'enseignant associé à cet id. " +
+            "Note: Dans le cas applicatif on donnera toujours l'id. Sans l'id est utile pour les tests")
+    @ApiResponse(responseCode = "200", description = "Renvoie le DTO de tous les miahoots d'un enseignant sauvegardés dans la base de données si l'id" +
+            " de l'enseignant est donné en paramètre ou TOUS les miahoot sauvegardés dans la base de donnée",
+            content = @Content(schema = @Schema(implementation = Miahoot.class), mediaType = MediaType.APPLICATION_JSON_VALUE))
+    @ApiResponse(responseCode = "404", description = "Renvoie une erreur 404 si aucune entité miahoot n'est trouvée",
+            content = @Content(schema = @Schema(implementation = MiahootNotFoundErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("miahoots")
+    Collection<Miahoot> getAllEntityMiahoot(@RequestParam(name = "id", required = false) String idEnseignant);
+
+
+    @Operation(description = "Création d'une entité Miahoot")
+    @ApiResponse(responseCode = "200", description = "L'entité Miahoot a bien été créée.")
+    @Error400Custom
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("miahoots")
+    void createEntityMiahoot(@Valid @RequestBody CreateMiahootRequest request);
+
+
     @Operation(description = "Récupérer le DTO de l'entité Miahoot qui a pour id celui passé en paramètre")
     @ApiResponse(responseCode = "200", description = "Renvoie le DTO de l'entité test demandée",
             content = @Content(schema = @Schema(implementation = Miahoot.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
     @ApiResponse(responseCode = "404", description = "Renvoie une erreur 404 si l'entité n'est pas trouvée",
             content = @Content(schema = @Schema(implementation = MiahootNotFoundErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("{id}")
+    @GetMapping("miahoots/{id}")
     Miahoot getEntityMiahoot(@PathVariable Long id);
 
-    @Operation(description = "Création d'une entité Miahoot")
-    @ApiResponse(responseCode = "200", description = "L'entité Miahoot a bien été créée.")
-    @Error400Custom
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping
-    void createEntityMiahoot(@Valid @RequestBody CreateMiahootRequest request);
 
     @Operation(description = "Suppression d'une entité Miahoot en bd")
     @ApiResponse(responseCode = "200", description = "la ressource a bien été supprimé")
     @ApiResponse(responseCode = "418", description = "Renvoie une erreur 418 si l'entité n'a pu être supprimée",
             content = @Content(schema = @Schema(implementation = TestEntityNotDeletedErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
     @ResponseStatus(HttpStatus.OK)
-    @DeleteMapping("{id}")
+    @DeleteMapping("miahoots/{id}")
     void deleteMiahootEntity(@PathVariable Long id);
 }
