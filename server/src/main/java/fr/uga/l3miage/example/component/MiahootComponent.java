@@ -38,9 +38,10 @@ public class MiahootComponent {
     }
 
 
-    public void createMiahoot(final MiahootEntity newMiahoot) {
+    public String createMiahoot(final MiahootEntity newMiahoot) {
         //je n'ai pas levé d'exception si un autre Miahoot à le même nom car deux mihaoots peuvent avoir le même nom
         miahootRepository.save(newMiahoot);
+        return newMiahoot.getIdMetier();
     }
 
     public void updateMiahoot(Miahoot miahoot, String idMetier) throws MiahootEntityNotFoundException {

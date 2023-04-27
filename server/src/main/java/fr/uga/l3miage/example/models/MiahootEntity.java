@@ -1,17 +1,17 @@
 package fr.uga.l3miage.example.models;
 
 
+import fr.uga.l3miage.example.idgenerator.IdMetierGenerator;
 import lombok.*;
-import org.aspectj.weaver.patterns.TypePatternQuestions;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
+
 
 @Getter
 @Setter
@@ -20,6 +20,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MiahootEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -38,7 +39,17 @@ public class MiahootEntity {
      * l'on renvoie
      */
 
+
+    @GeneratedValue(generator = "miahoot_seq")
+    @GenericGenerator(
+            name = "miahoot_seq",
+            strategy = "fr.uga.l3miage.example.idgenerator.IdMetierGenerator",
+            parameters = {
+                    @Parameter(name = IdMetierGenerator.INCREMENT_PARAM, value = "1"),
+                    @Parameter(name = IdMetierGenerator.VALUE_PREFIX_PARAMETER, value = "MIAHOOT-"),
+                    @Parameter(name = IdMetierGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d") })
     private String idMetier;
+
 
     @NotBlank
     private String nom;

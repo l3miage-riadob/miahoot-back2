@@ -23,10 +23,10 @@ public class MiahootService {
     private final MiahootMapper miahootMapper;
     private final MiahootComponent miahootComponent;
 
-    public void createMiahoot(final CreateMiahootRequest request) {
+    public String createMiahoot(final CreateMiahootRequest request) {
 
         MiahootEntity newMiahootEntity = this.miahootMapper.toEntity(request);
-        this.miahootComponent.createMiahoot(newMiahootEntity);
+        return this.miahootComponent.createMiahoot(newMiahootEntity);
     }
 
     //get un miahoot via son id au format DTO

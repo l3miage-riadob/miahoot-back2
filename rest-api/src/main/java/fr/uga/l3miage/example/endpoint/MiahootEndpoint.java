@@ -48,7 +48,7 @@ public interface MiahootEndpoint {
     @Error400Custom
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("miahoots")
-    void createEntityMiahoot(@Valid @RequestBody CreateMiahootRequest request);
+    String createEntityMiahoot(@Valid @RequestBody CreateMiahootRequest request);
 
 
     @Operation(description = "Récupérer le DTO de l'entité Miahoot qui a pour id celui passé en paramètre")
