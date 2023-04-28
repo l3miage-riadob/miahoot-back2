@@ -27,16 +27,11 @@ public class MiahootService {
     public String createMiahoot(final CreateMiahootRequest request) {
 
         MiahootEntity newMiahootEntity = this.miahootMapper.toEntity(request);
-<<<<<<< HEAD
-        //System.out.println("------------------------------");
-        //System.out.println("Service createMiahoot: Nombre de questions dans la request Entity = " + newMiahootEntity.getQuestions().size());
-=======
 
         newMiahootEntity.setIdMetier(IdMetierMiahootGenerator.generateIdMetier());
 
         System.out.println("------------------------------");
         System.out.println("Service createMiahoot: Nombre de questions dans la request Entity = " + newMiahootEntity.getQuestions().size());
->>>>>>> 7472bb287446df522da26345bfa77da1799ea78b
         return this.miahootComponent.createMiahoot(newMiahootEntity);
     }
 

@@ -27,7 +27,7 @@ public class QuestionEntity {
     @ManyToOne
     private MiahootEntity miahoot;
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @OrderBy("id ASC")
     private List<ReponseEntity> reponses = new ArrayList<>();
 

@@ -28,7 +28,7 @@ public class ReponseEntity {
     @ManyToOne
     private QuestionEntity question;
 
-
+    //
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
