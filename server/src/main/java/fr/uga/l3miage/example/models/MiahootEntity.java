@@ -1,7 +1,6 @@
 package fr.uga.l3miage.example.models;
 
 
-import fr.uga.l3miage.example.idgenerator.IdMetierGenerator;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.GenericGenerator;
@@ -39,15 +38,7 @@ public class MiahootEntity {
      * l'on renvoie
      */
 
-    // Ca marche?
-    @GeneratedValue(generator = "miahoot_seq")
-    @GenericGenerator(
-            name = "miahoot_seq",
-            strategy = "fr.uga.l3miage.example.idgenerator.IdMetierGenerator",
-            parameters = {
-                    @Parameter(name = IdMetierGenerator.INCREMENT_PARAM, value = "1"),
-                    @Parameter(name = IdMetierGenerator.VALUE_PREFIX_PARAMETER, value = "MIAHOOT-"),
-                    @Parameter(name = IdMetierGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d") })
+
     private String idMetier;
 
 

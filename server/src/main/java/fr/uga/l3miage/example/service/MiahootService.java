@@ -6,6 +6,7 @@ import fr.uga.l3miage.example.exception.rest.*;
 import fr.uga.l3miage.example.exception.technical.MiahootEntityNotFoundException;
 import fr.uga.l3miage.example.exception.technical.MultipleEntityHaveSameDescriptionException;
 import fr.uga.l3miage.example.exception.technical.TestEntityNotFoundException;
+import fr.uga.l3miage.example.idgenerator.IdMetierMiahootGenerator;
 import fr.uga.l3miage.example.mapper.MiahootMapper;
 import fr.uga.l3miage.example.models.MiahootEntity;
 import fr.uga.l3miage.example.request.CreateMiahootRequest;
@@ -26,6 +27,9 @@ public class MiahootService {
     public String createMiahoot(final CreateMiahootRequest request) {
 
         MiahootEntity newMiahootEntity = this.miahootMapper.toEntity(request);
+
+        newMiahootEntity.setIdMetier(IdMetierMiahootGenerator.generateIdMetier());
+
         System.out.println("------------------------------");
         System.out.println("Service createMiahoot: Nombre de questions dans la request Entity = " + newMiahootEntity.getQuestions().size());
         return this.miahootComponent.createMiahoot(newMiahootEntity);
