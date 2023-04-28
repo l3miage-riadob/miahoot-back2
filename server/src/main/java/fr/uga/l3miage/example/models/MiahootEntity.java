@@ -51,9 +51,8 @@ public class MiahootEntity {
                     @Parameter(name = IdMetierGenerator.INCREMENT_PARAM, value = "1"),
                     @Parameter(name = IdMetierGenerator.VALUE_PREFIX_PARAMETER, value = "MIAHOOT-"),
                     @Parameter(name = IdMetierGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d") })
-=======
 
->>>>>>> 7472bb287446df522da26345bfa77da1799ea78b
+    7472bb287446df522da26345bfa77da1799ea78b
     private String idMetier;
 
     @OneToMany(mappedBy = "miahoot", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
