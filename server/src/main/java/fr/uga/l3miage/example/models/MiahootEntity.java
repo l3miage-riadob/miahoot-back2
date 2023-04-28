@@ -39,7 +39,10 @@ public class MiahootEntity {
      * l'on renvoie
      */
 
-    // Ca marche?
+    @NotBlank
+    private String nom;
+
+    //Ca marche?
     @GeneratedValue(generator = "miahoot_seq")
     @GenericGenerator(
             name = "miahoot_seq",
@@ -49,11 +52,6 @@ public class MiahootEntity {
                     @Parameter(name = IdMetierGenerator.VALUE_PREFIX_PARAMETER, value = "MIAHOOT-"),
                     @Parameter(name = IdMetierGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d") })
     private String idMetier;
-
-
-
-    @NotBlank
-    private String nom;
 
     @OneToMany(mappedBy = "miahoot", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     List<QuestionEntity> questions;

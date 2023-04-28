@@ -22,7 +22,7 @@ public class ReponseEntity {
     @NotBlank
     private String label;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private Boolean estValide;
 
     @ManyToOne
