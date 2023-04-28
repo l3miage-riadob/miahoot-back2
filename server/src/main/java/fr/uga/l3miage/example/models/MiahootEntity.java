@@ -1,7 +1,6 @@
 package fr.uga.l3miage.example.models;
 
 
-import fr.uga.l3miage.example.idgenerator.IdMetierGenerator;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.GenericGenerator;
@@ -39,6 +38,7 @@ public class MiahootEntity {
      * l'on renvoie
      */
 
+<<<<<<< HEAD
     @NotBlank
     private String nom;
 
@@ -51,6 +51,9 @@ public class MiahootEntity {
                     @Parameter(name = IdMetierGenerator.INCREMENT_PARAM, value = "1"),
                     @Parameter(name = IdMetierGenerator.VALUE_PREFIX_PARAMETER, value = "MIAHOOT-"),
                     @Parameter(name = IdMetierGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d") })
+=======
+
+>>>>>>> 7472bb287446df522da26345bfa77da1799ea78b
     private String idMetier;
 
     @OneToMany(mappedBy = "miahoot", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
