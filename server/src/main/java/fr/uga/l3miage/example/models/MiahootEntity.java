@@ -46,7 +46,7 @@ public class MiahootEntity {
     @NotBlank
     private String nom;
 
-    @OneToMany(mappedBy = "miahoot", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "miahoot", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     List<QuestionEntity> questions;
 
 
