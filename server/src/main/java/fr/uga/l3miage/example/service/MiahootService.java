@@ -26,6 +26,8 @@ public class MiahootService {
     public String createMiahoot(final CreateMiahootRequest request) {
 
         MiahootEntity newMiahootEntity = this.miahootMapper.toEntity(request);
+        System.out.println("------------------------------");
+        System.out.println("Service createMiahoot: Nombre de questions dans la request Entity = " + newMiahootEntity.getQuestions().size());
         return this.miahootComponent.createMiahoot(newMiahootEntity);
     }
 
@@ -44,7 +46,15 @@ public class MiahootService {
 
     // Renvoie tous les Miahoot présent dans la base de données
     public Collection<Miahoot> getAllMiahoot() {
-        return miahootMapper.toDto(miahootComponent.getAllMiahoot());
+        Collection<MiahootEntity> miahootEntities = miahootComponent.getAllMiahoot();
+        MiahootEntity m = miahootEntities.iterator().next();
+        System.out.println("---------------");
+        System.out.println("Service getAllMiahoot: Nombre de miahoot = " + miahootEntities.size() );
+        System.out.println("Service gelAllMiahoot: Nom = " + m.getNom());
+        System.out.println("Service gelAllMiahoot: id enseignant = " + m.getIdEnseignant());
+        System.out.println("Service gelAllMiahoot: Nombre de questions  = " + m.getQuestions().size());
+        return miahootMapper.toDto(miahootEntities);
+        //return miahootMapper.toDto(miahootComponent.getAllMiahoot());
     }
 
     // Renvoie tous les Miahoot présent dans la base de donnée associé à l'idEnseignant

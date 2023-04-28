@@ -29,11 +29,18 @@ public class MiahootController implements MiahootEndpoint {
      * @return Tous les miahoots associés à idEnseignant ou bien tous les miahoots si cet id est null
      */
     public Collection<Miahoot> getAllEntityMiahoot(String idEnseignant) {
+        Collection<Miahoot> miahoots;
         if (idEnseignant == null) {
-            return miahootService.getAllMiahoot();
+            miahoots = miahootService.getAllMiahoot();
+            //return miahootService.getAllMiahoot();
         } else {
-            return miahootService.getAllEnseignantMiahoot(idEnseignant);
+            miahoots = miahootService.getAllEnseignantMiahoot(idEnseignant);
+            //return miahootService.getAllEnseignantMiahoot(idEnseignant);
         }
+        System.out.println("------------------------------");
+        System.out.println("Controller getAllEntityMiahoot: Nombre de miahoot renvoyé trouvé = " + miahoots.size());
+        System.out.println("Controller getAllEntityMiahoot: Nombre de questions dans ce miahoot = " + miahoots.iterator().next().getQuestions().size());
+        return miahoots;
     }
 
     @Override
@@ -43,6 +50,8 @@ public class MiahootController implements MiahootEndpoint {
 
     @Override
     public String createEntityMiahoot(final CreateMiahootRequest request) {
+        System.out.println("------------------------------");
+        System.out.println("Controller createEntityMiahoot: Nombre de questions dans la request = " + request.getQuestions().size());
         return this.miahootService.createMiahoot(request);
     }
 

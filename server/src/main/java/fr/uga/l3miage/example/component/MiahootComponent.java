@@ -29,6 +29,7 @@ public class MiahootComponent {
 
     public Collection<MiahootEntity> getAllMiahoot() {
         return miahootRepository.findAll();
+
     }
 
     // Renvoie tous les Miahoot présent dans la base de donnée associé à l'idEnseignant
@@ -40,7 +41,14 @@ public class MiahootComponent {
 
     public String createMiahoot(final MiahootEntity newMiahoot) {
         //je n'ai pas levé d'exception si un autre Miahoot à le même nom car deux mihaoots peuvent avoir le même nom
+        System.out.println("------------------------------");
+        System.out.println("Component createMiahoot: Avant de save nombre de questions dans la request Entity = " + newMiahoot.getQuestions().size());
         miahootRepository.save(newMiahoot);
+
+        MiahootEntity tmpTest = miahootRepository.getOne(newMiahoot.getId());
+        System.out.println("Component createMiahoot: Ici on a sauvegardé l'entité, on la récupère et on regarde si il a appliqué le persistant sur les associations");
+        System.out.println("Component createMiahoot: Nombre de question dans le miahoot récupéré après save = " + tmpTest.getQuestions().size());
+
         return newMiahoot.getIdMetier();
     }
 
