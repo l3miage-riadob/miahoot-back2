@@ -30,8 +30,6 @@ public class MiahootService {
 
         newMiahootEntity.setIdMetier(IdMetierMiahootGenerator.generateIdMetier());
 
-        System.out.println("------------------------------");
-        System.out.println("Service createMiahoot: Nombre de questions dans la request Entity = " + newMiahootEntity.getQuestions().size());
         return this.miahootComponent.createMiahoot(newMiahootEntity);
     }
 
@@ -52,11 +50,6 @@ public class MiahootService {
     public Collection<Miahoot> getAllMiahoot() {
         Collection<MiahootEntity> miahootEntities = miahootComponent.getAllMiahoot();
         MiahootEntity m = miahootEntities.iterator().next();
-        System.out.println("---------------");
-        System.out.println("Service getAllMiahoot: Nombre de miahoot = " + miahootEntities.size() );
-        System.out.println("Service gelAllMiahoot: Nom = " + m.getNom());
-        System.out.println("Service gelAllMiahoot: id enseignant = " + m.getIdEnseignant());
-        System.out.println("Service gelAllMiahoot: Nombre de questions  = " + m.getQuestions().size());
         return miahootMapper.toDto(miahootEntities);
 
         //return miahootMapper.toDto(miahootComponent.getAllMiahoot());
